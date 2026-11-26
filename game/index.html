@@ -1,0 +1,66 @@
+<!doctype html>
+<!-- EMBERWING — Wildfire Water Bomber. A complete flight game in static files.
+     Canvas 3D chase view + lit instruments + DOM HUD. No network requests. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMBERWING — Wildfire Water Bomber</title>
+<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<!-- Top bar: mission, leg, win/lose, timer, big score, best -->
+<header id="hud-top">
+  <div class="top-left">
+    <span id="hud-mission" class="mission">LEG 1 — PINE HOLLOW</span>
+    <span id="hud-leg" class="leg">LEG 1/7</span>
+    <span id="hud-winlose" class="winlose">WIN: ALL 21 FIRES OUT · LOSE: FUEL 0 / CRASH</span>
+  </div>
+  <div class="top-right">
+    <span id="hud-timer" class="timer">00:00</span>
+    <span class="score-wrap">SCORE <span id="hud-score" class="score">0</span></span>
+    <span id="hud-best" class="best">BEST 0</span>
+  </div>
+</header>
+
+<!-- Left: flight plan + fuel / damage / water -->
+<aside id="hud-left" class="panel-side">
+  <h3>FLIGHT PLAN — EMBER VALLEY</h3>
+  <div id="hud-plan"></div>
+  <div class="meter-row"><span>FUEL</span><b id="hud-fuel">900 kg (100%)</b></div>
+  <div class="meter-row"><span>DAMAGE</span><b id="hud-damage">0%</b></div>
+  <div class="meter-row"><span>WATER</span><b id="hud-water">3,000 L</b></div>
+  <div id="hud-fuel-verdict" class="verdict ok">FUEL OK FOR THIS LEG</div>
+</aside>
+
+<!-- Right: next objective, wind, weather, fires, chain -->
+<aside id="hud-right" class="panel-side">
+  <h3>NEXT OBJECTIVE</h3>
+  <div id="hud-next" class="next">DROP — PINE HOLLOW</div>
+  <div id="hud-next-dist" class="next-dist">0 m</div>
+  <div class="meter-row"><span>WIND</span><b id="hud-wind">315° · 6 m/s</b></div>
+  <div class="meter-row"><span>WEATHER</span><b id="hud-weather">SMOKE HAZE · VIS 12 km</b></div>
+  <div class="meter-row"><span>FIRES</span><b id="hud-fires">21 FIRES BURNING · 3 THIS LEG</b></div>
+  <div id="hud-chain" class="chain">NO CHAIN — DROP ON A FIRE</div>
+</aside>
+
+<!-- Celebration banner -->
+<div id="hud-banner-wrap"><div id="hud-banner"></div><div id="hud-banner-sub"></div></div>
+
+<!-- Bottom strip: controls + seed -->
+<footer id="hud-bottom">
+  <span><b>↑↓</b> pitch</span><span><b>←→</b> bank &amp; turn</span>
+  <span><b>W/S</b> throttle</span><span><b>SPACE</b> drop water</span>
+  <span><b>F</b> flaps</span><span><b>C</b> cockpit / chase</span>
+  <span><b>P</b> pause</span><span><b>M</b> mute</span><span><b>R</b> restart</span>
+  <span class="seed">SEED 20261126 · EMBER VALLEY · SUNSET SORTIE</span>
+</footer>
+
+<!-- Title / pause / end screens -->
+<div id="screen"></div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
